@@ -4,8 +4,15 @@ ignoredisk --only-use=sda
 clearpart --none --initlabel
 # Use graphical install
 # graphical
+# Set the authentication options for the system
+auth --passalgo=sha512 --useshadow
+# License agreement
+eula --agreed
+# Use network installation
+url --url="https://download.rockylinux.org/pub/rocky/9/BaseOS/x86_64/os/"
+repo --name="AppStream" --baseurl=https://download.rockylinux.org/pub/rocky/9/AppStream/x86_64/os/
 # Use CDROM installation media
-cdrom
+#cdrom
 text
 # Keyboard layouts
 keyboard --vckeymap=us --xlayouts='us'
@@ -13,9 +20,9 @@ keyboard --vckeymap=us --xlayouts='us'
 lang en_US.UTF-8
 
 # Network information
-network  --bootproto=dhcp --ipv6=auto --activate
-network  --hostname=localhost.localdomain
-repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
+#network  --bootproto=static --ip=10.4.27.179 --netmask=255.255.255.240.0 --gateway=10.4.20.1 --activate  --onboot=yes
+network  --hostname=rocky9.localdomain
+#repo --name="AppStream" --baseurl=file:///run/install/repo/AppStream
 # Root password
 rootpw Packer
 # Run the Setup Agent on first boot
